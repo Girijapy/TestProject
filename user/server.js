@@ -7,7 +7,7 @@ import {
   updateUser,
   deleteUser
 } from "./UserController.js";
-
+import cors from "cors";
 import {
   add,
   subtract
@@ -18,6 +18,15 @@ import connectDB from "../Database/dbConnection.js";
 connectDB();
 
 const app = express();
+app.use(cors(
+  {
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 200,
+  }
+));
+
 
 app.use(express.json());
 
